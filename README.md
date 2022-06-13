@@ -1,2 +1,1 @@
-# python-programing-assignment
-# Grade: VG
+# python-programing
