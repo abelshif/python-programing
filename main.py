@@ -1,5 +1,5 @@
 
-from pathlib import Path
+#from pathlib import Path
 from  Vaccin_Data import Data_managing
 
 def main():
@@ -8,9 +8,10 @@ def main():
     """
     data_manage = Data_managing() #create an object of class "Data_managing"
     data_manage.create_database()
-    data_manage.seed_database(Path('vaccin_covid.db'))
+    #data_manage.seed_database(Path('vaccin_covid.db'))
+    data_manage.seed_database()
     data_manage.normalization()
-    print(data_manage._extract_country_data(country = 'Sweden'))
+    print(data_manage._extract_country_data('Sweden'))
     data_manage.plot_daily_vaccinations()
     
 if __name__ == "__main__":

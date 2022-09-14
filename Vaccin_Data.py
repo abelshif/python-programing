@@ -1,6 +1,7 @@
 
 import pandas as pd
 import sqlite3
+from pathlib import Path
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -14,7 +15,7 @@ class Data_managing:
 
     def create_database(self):
         """ This method creats a connection to the database and open the vaccin_covid.csv file as
-        vacccin_covid.db file where all the values in the vaccin_covid.csv table(vaccin)
+        vacccin_covid.db file where all the values in the vaccin_covid.csv table(df_vaccin)
         are copied in to the vaccin_covid.db table(vaccination). 
 
         Returns:
@@ -24,16 +25,20 @@ class Data_managing:
 
         self.db_conn = sqlite3.connect('vaccin_covid.db') # connects to vaccin_covid.db and opens it as a database
         self.cur = self.db_conn.cursor()
-        vaccination = self.df_vaccin.to_sql('vaccination', self.db_conn) # creates the table "vaccination" in the database "vaccin_covid.db" and fill it with the csv data
+        vaccination = self.df_vaccin.to_sql('vaccination', self.db_conn) # creates the table "vaccination" in the database 
+                                                                         # "vaccin_covid.db" and fill it with the csv data
                                                                   
         return vaccination
     
-    def seed_database(self, path_to_file):
-        """ This method returns path to vaccin_covid.db. 
+    #def seed_database(self, path_to_file):
+    def seed_database(self):
+        """ This method yields path to vaccin_covid.db. 
         """
 
+        self.path_to_file = Path('vaccin_covid.db')
         print("------------------------------------------------")
-        print("Path to vaccin_covid.db file:- ", path_to_file)
+        #print("Path to vaccin_covid.db file:- ", path_to_file)
+        print("Path to vaccin_covid.db file:- ", self.path_to_file)
         print("------------------------------------------------")
 
     def normalization(self):
