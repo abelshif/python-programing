@@ -1,2 +1,1 @@
 # python-programing
-Grade = VG
